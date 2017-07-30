@@ -11,15 +11,19 @@ module.exports = function(grunt) {
                 src: 'src/<%= pkg.name %>.js',
                 dest: 'build/<%= pkg.name %>.min.js'
             }
+        },
+        execute: {
+            parse: {
+                src: ['./Code/Parse.js']
+            }
         }
     });
 
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-execute');
 
     // Default task(s).
-    grunt.registerTask('default', function(){
-        console.log("HEY");
-    });
+    grunt.registerTask('parse', ['execute:parse']);
 
 };
