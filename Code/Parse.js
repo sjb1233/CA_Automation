@@ -20,11 +20,16 @@ function createJSON(objArr, callback) {
     if (objArr == undefined || objArr === null) callback("objArr is undefined or null")
     var obj = {};
     for (var i = 0; i < objArr.length; i++) {
-        obj[objArr[i].Name_of_School] = {
-            Number_of_Delegates: objArr[i].Number_of_Delegates,
-            GA: getArray(objArr[i].General_Assemblies_and_ECOSOC),
-            SA: getArray(objArr[i].Specialized_Agencies),
-            CRI: getArray(objArr[i].Crises)
+        if(obj[objArr[i].Name_of_School] == null || obj[objArr[i].Name_of_School] == undefined) {
+            obj[objArr[i].Name_of_School] = {
+                Number_of_Delegates: objArr[i].Number_of_Delegates,
+                GA: getArray(objArr[i].General_Assemblies_and_ECOSOC),
+                SA: getArray(objArr[i].Specialized_Agencies),
+                CRI: getArray(objArr[i].Crises)
+            }
+        }
+        else{
+            obj[objArr[i].Name_of_School].Number_of_Delegates = obj[objArr[i].Name_of_School].Number_of_Delegates + objArr[i].Number_of_Delegates; //allow for multiple school entries
         }
     }
     var fs = require('fs');
