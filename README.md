@@ -7,6 +7,13 @@ npm install will install dependencies
 npm install -g grunt-cli
 
 
+
+Inputs:
+Registration forms (export from website, in JSON form)
+CSV of schools in priority order
+CSV of countries in priority order, with committees
+
+
 TO DO:
 
 Parse gives JSON Obj:

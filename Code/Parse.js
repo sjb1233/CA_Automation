@@ -1,4 +1,8 @@
-getFile(function (jsonFile) {
+//This takes in Input/RegistrationForm and produces CountryMatrix.json
+
+var getFile = require("./common.js").getFileFunction;
+
+getFile("RegistrationForm", function (jsonFile) {
     if (jsonFile === undefined || jsonFile === null) console.log("An error occured");
     else {
         console.log("Starting to create JSON objects");
@@ -11,28 +15,6 @@ getFile(function (jsonFile) {
         })
     }
 });
-
-
-function getFile(callback) {
-    var fse = require('fs-extra');
-    var fs = require('fs');
-    fse.emptyDir("Input_Parsed").then(function (err) {
-        if (err) {
-            console.log(err);
-            callback()
-        }
-        //Now, we have an empty directory, we can begin parsing
-        fs.readdir("Input", function (err, filenames) {
-            if (err) {
-                console.log(err);
-                callback()
-            }
-            filenames.forEach(function (filename) {
-                callback("Input/" + filename);
-            });
-        })
-    })
-}
 
 function createJSON(objArr, callback) {
     if (objArr == undefined || objArr === null) callback("objArr is undefined or null")

@@ -1,0 +1,42 @@
+{
+  "priorArr": [
+    {
+      "country": "A",
+      "positions": 1,
+      "committees": [
+        "a1",
+        "a2",
+        "a3"
+      ]
+    },
+    {
+      "country": "B",
+      "positions": 1,
+      "committees": [
+        "b1",
+        "b2"
+      ]
+    },
+    {
+      "country": "C",
+      "positions": 1,
+      "committees": [
+        "c1"
+      ]
+    },
+    {
+      "country": "D",
+      "positions": 1,
+      "committees": [
+        "d1"
+      ]
+    },
+    {
+      "country": "E",
+      "positions": 1,
+      "committees": [
+        "e1"
+      ]
+    }
+  ]
+}

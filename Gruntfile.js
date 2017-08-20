@@ -15,6 +15,15 @@ module.exports = function(grunt) {
         execute: {
             parse: {
                 src: ['./Code/Parse.js']
+            },
+            priority_school: {
+                src: ['./Code/Priority_School.js']
+            },
+            clean: {
+                src: ['./Code/Clean.js']
+            },
+            priority_country: {
+                src: ['./Code/Priority_Country.js']
             }
         }
     });
@@ -24,6 +33,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-execute');
 
     // Default task(s).
-    grunt.registerTask('parse', ['execute:parse']);
+    grunt.registerTask('parse', ['execute:clean', 'execute:parse', 'execute:priority_school']);
+
+
+    grunt.registerTask('parse_form', ['execute:parse']);
+    grunt.registerTask('parse_school_priority', ['execute:priority_school']);
+    grunt.registerTask('parse_country_priority', ['execute:priority_country']);
+    grunt.registerTask('clean', ['execute:clean'])
 
 };
