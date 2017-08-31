@@ -25,11 +25,14 @@ function createJSON(objArr, callback) {
                 Number_of_Delegates: objArr[i].Number_of_Delegates,
                 GA: getArray(objArr[i].General_Assemblies_and_ECOSOC),
                 SA: getArray(objArr[i].Specialized_Agencies),
-                CRI: getArray(objArr[i].Crises)
+                CRI: getArray(objArr[i].Crises),
+                Countries: [],
+                Number_Remaining: objArr[i].Number_of_Delegates,
             }
         }
         else{
             obj[objArr[i].Name_of_School].Number_of_Delegates = obj[objArr[i].Name_of_School].Number_of_Delegates + objArr[i].Number_of_Delegates; //allow for multiple school entries
+            obj[objArr[i].Name_of_School].Number_Remaining = obj[objArr[i].Name_of_School].Number_of_Delegates;
         }
     }
     var fs = require('fs');

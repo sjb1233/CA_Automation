@@ -1,1 +1,84 @@
-{"priorArr":[{"country":"A","positions":1,"committees":["a1","a2","a3"]},{"country":"B","positions":1,"committees":["b1","b2"]},{"country":"C","positions":1,"committees":["c1"]},{"country":"D","positions":1,"committees":["d1"]},{"country":"E","positions":1,"committees":["e1"]}]}
+{
+  "priorArr": [
+    {
+      "country": "A",
+      "positions": 5,
+      "committees": [
+        "a1",
+        "a2",
+        "a3"
+      ]
+    },
+    {
+      "country": "B",
+      "positions": 3,
+      "committees": [
+        "b1",
+        "b2"
+      ]
+    },
+    {
+      "country": "C",
+      "positions": 4,
+      "committees": [
+        "c1"
+      ]
+    },
+    {
+      "country": "D",
+      "positions": 9,
+      "committees": [
+        "d1"
+      ]
+    },
+    {
+      "country": "E",
+      "positions": 14,
+      "committees": [
+        "e1"
+      ]
+    },
+    {
+      "country": "F",
+      "positions": 11,
+      "committees": [
+        "f1"
+      ]
+    },
+    {
+      "country": "G",
+      "positions": 4,
+      "committees": [
+        "g1"
+      ]
+    },
+    {
+      "country": "H",
+      "positions": 2,
+      "committees": [
+        "h1"
+      ]
+    },
+    {
+      "country": "I",
+      "positions": 6,
+      "committees": [
+        "i1"
+      ]
+    },
+    {
+      "country": "J",
+      "positions": 3,
+      "committees": [
+        "j1"
+      ]
+    },
+    {
+      "country": "K",
+      "positions": 2,
+      "committees": [
+        "k1"
+      ]
+    }
+  ]
+}
