@@ -1,10 +1,12 @@
-var countryArr = require("../Input_Parsed/Priority_Country.json").priorArr;
+var env = require("../env.json");
+var runId = env.runId;
+
+var countryArr = require("../Input_Parsed/" + runId + "/Priority_Country.json").priorArr;
 var countryAssigned = {};
 
-var schoolArr = require("../Input_Parsed/Priority_School.json").priorArr;
-var countryMatrix = require("../Input_Parsed/CountryMatrix.json");
+var schoolArr = require("../Input_Parsed/" + runId + "/Priority_School.json").priorArr;
+var countryMatrix = require("../Input_Parsed/" + runId + "/CountryMatrix.json");
 
-var env = require("../env.json");
 var fs = require("fs");
 
 var range = env.range;
@@ -114,15 +116,21 @@ function match(getCountry) {
         if (index >= schoolArr.length) index = 0;
     }
 
-    fs.writeFile("Input_Parsed/CountryAssignment.json", JSON.stringify(countryAssigned), 'utf8', function (err) {
+    fs.writeFile("Input_Parsed/" + runId + "/CountryAssignment.json", JSON.stringify(countryAssigned), 'utf8', function (err) {
         if (err)
             throw err;
 
-        fs.writeFile("Input_Parsed/FinalizedMatrix.json", JSON.stringify(countryMatrix), 'utf8', function(err){
+        fs.writeFile("Input_Parsed/" + runId + "/FinalizedMatrix.json", JSON.stringify(countryMatrix), 'utf8', function(err){
             if(err) throw err;
             console.log("Write FinalizedMatrix.json");
-            return;
-        })
+
+            //now iterate the env.json
+            env.runId += 1;
+            fs.writeFile("env.json", JSON.stringify(env), 'utf8', function(err) {
+                if (err) throw err;
+                return;
+            });
+        });
     });
 
 }

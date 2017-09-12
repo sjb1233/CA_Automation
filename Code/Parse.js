@@ -1,6 +1,8 @@
 //This takes in Input/RegistrationForm and produces CountryMatrix.json
 
 var getFile = require("./common.js").getFileFunction;
+var env = require("../env.json");
+var runId = env.runId;
 
 getFile("RegistrationForm", function (jsonFile) {
     if (jsonFile === undefined || jsonFile === null) console.log("An error occured");
@@ -36,7 +38,7 @@ function createJSON(objArr, callback) {
         }
     }
     var fs = require('fs');
-    fs.writeFile("Input_Parsed/CountryMatrix.json", JSON.stringify(obj), 'utf8', function (err) {
+    fs.writeFile("Input_Parsed/" + runId + "/CountryMatrix.json", JSON.stringify(obj), 'utf8', function (err) {
         if (err) {
             callback("Error writing CountryMatrix file");
         }

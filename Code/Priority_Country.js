@@ -3,6 +3,9 @@
 var getFile = require("./common.js").getFileFunction;
 var fs = require("fs");
 
+var env = require("../env.json");
+var runId = env.runId;
+
 getFile("Priority_Country", function(fileName){
     fs.readFile(fileName, 'utf8', function(err, data){
         var data_clean = data.split("\r\n");
@@ -41,7 +44,7 @@ function createJSON(arr, callback) {
         }
     }
     obj.priorArr = priorArr;
-    fs.writeFile("Input_Parsed/Priority_Country.json", JSON.stringify(obj), 'utf8', function (err) {
+    fs.writeFile("Input_Parsed/" + runId + "/Priority_Country.json", JSON.stringify(obj), 'utf8', function (err) {
         if (err) {
             callback("Error writing Priority_Country file");
         }

@@ -21,7 +21,17 @@ function getFile(str, callback) {
 
 function clean(){
     var fse = require('fs-extra');
-    fse.emptyDir("Input_Parsed").then(function (err) {
+    var fs = require('fs');
+    var env = require("../env.json");
+    var runId = env.runId;
+
+    var dir = "Input_Parsed/" + runId;
+
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+
+    fse.emptyDir(dir).then(function (err) {
         if(err) console.log(err);
     });
 }

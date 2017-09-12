@@ -2,7 +2,9 @@
 
 var getFile = require("./common.js").getFileFunction;
 var fs = require("fs");
-var countryMatrix = require("../Input_Parsed/CountryMatrix.json");
+var env = require("../env.json");
+var runId = env.runId;
+var countryMatrix = require("../Input_Parsed/" + runId + "/CountryMatrix.json");
 
 getFile("Priority_School", function(fileName){
     fs.readFile(fileName, 'utf8', function(err, data){
@@ -34,7 +36,7 @@ function createJSON(arr, callback) {
         }
     }
     obj.priorArr = priorArr;
-    fs.writeFile("Input_Parsed/Priority_School.json", JSON.stringify(obj), 'utf8', function (err) {
+    fs.writeFile("Input_Parsed/" + runId + "/Priority_School.json", JSON.stringify(obj), 'utf8', function (err) {
         if (err) {
             callback("Error writing Priority_School file");
         }
