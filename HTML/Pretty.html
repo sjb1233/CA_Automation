@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Country Assignments</title>
+</head>
+<body>
+
+RunId : <input type="text" id="ID" onchange="onChange()">
+
+
+<br/><br/>
+
+<table id="CA_Table">
+</table>
+<script src="runId.js"></script>
+<script>
+    var x = document.getElementById("ID");
+    x.value = 0;
+
+    function onChange(){
+        var x = document.getElementById("ID");
+        var json = runId(x.value);
+        if(json === "") x.value = "No Input_Parsed folder";
+        else{
+            x.value = "Folder exists";
+        }
+    }
+
+</script>
+
+</body>
+</html>
