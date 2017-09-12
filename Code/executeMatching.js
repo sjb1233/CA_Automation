@@ -13,27 +13,27 @@ var whileRetryLimit = env.whileRetryLimit;
 var localRangeLimit = env.localRangeLimit;
 
 
-function checkEnoughPositions(){
+function checkEnoughPositions() {
     var positionCount = 0;
     var delegateCount = 0;
 
-    for(var i = 0; i < countryArr.length;i++){
+    for (var i = 0; i < countryArr.length; i++) {
         positionCount += countryArr[i].positions;
     }
-    for(var i = 0; i < schoolArr.length;i++){
+    for (var i = 0; i < schoolArr.length; i++) {
         delegateCount += countryMatrix[schoolArr[i]].Number_of_Delegates;
     }
 
     console.log(positionCount);
     console.log(delegateCount);
 
-    if(positionCount < delegateCount) throw "There aren't enough positions for the delegate count";
+    if (positionCount < delegateCount) throw "There aren't enough positions for the delegate count";
 
 }
 
 checkEnoughPositions();
 
-function getCountryRandom(index, localRange, school){
+function getCountryRandom(index, localRange, school) {
     try {
         //console.log(school + ": " + countryMatrix[school].Number_Remaining);
         if (localRange > localRangeLimit) return;
@@ -63,12 +63,12 @@ function getCountryRandom(index, localRange, school){
         //if we didn't end up finding a country, recursively call and double the localRange
         if (localRange == 0) return getCountryRandom(index, 1, school);
         return getCountryRandom(index, localRange * 2, school);
-    }catch(e){
+    } catch (e) {
         return;
     }
 }
 
-function getRandomNumber(lower, upper){
+function getRandomNumber(lower, upper) {
     var random = Math.random();
     var r = upper - lower;
 
@@ -76,28 +76,28 @@ function getRandomNumber(lower, upper){
     return ret;
 }
 
-function getDelegateRemaining(){
+function getDelegateRemaining() {
     var remaining = 0;
-    for(var i = 0; i < schoolArr.length; i++){
+    for (var i = 0; i < schoolArr.length; i++) {
         remaining += countryMatrix[schoolArr[i]].Number_Remaining;
     }
     return remaining;
 }
 
 
-function match(getCountry){
+function match(getCountry) {
     var cycles = 0;
     var index = 0;
-    while(true){
+    while (true) {
         console.log("CYCLES " + cycles);
-        if(cycles >= whileRetryLimit) break;
-        if(getDelegateRemaining() == 0) break;
+        if (cycles >= whileRetryLimit) break;
+        if (getDelegateRemaining() == 0) break;
         var school = schoolArr[index];
-        var country  = getCountry(index, range, school);
-        if(country === undefined || country === null || country === ""){
+        var country = getCountry(index, range, school);
+        if (country === undefined || country === null || country === "") {
             index++;
             cycles++;
-            if(index >= schoolArr.length) index = 0;
+            if (index >= schoolArr.length) index = 0;
             continue;
         }
         //else, we have a countryJSON returned
@@ -105,28 +105,28 @@ function match(getCountry){
         countryMatrix[school].Countries.push(country.country); //add country to countryMatrix
         countryMatrix[school].Number_Remaining = countryMatrix[school].Number_Remaining - country.positions; //reduce the number remaining
         //NOTE, the country should be removed from the countryArr in the getCountry function
-        if(countryMatrix[school].Number_Remaining <= 0){
+        if (countryMatrix[school].Number_Remaining <= 0) {
             schoolArr.splice(index, 1);
             index--; //since we just removed from the school array, we need the index to stay in place. We'll decrement before the upcoming increment
         }
         index++;
         cycles++;
-        if(index >= schoolArr.length) index = 0;
+        if (index >= schoolArr.length) index = 0;
     }
 
-    fs.writeFile("../Input_Parsed/CountryAssignment.json", JSON.stringify(countryAssigned), 'utf8', function (err) {
+    fs.writeFile("Input_Parsed/CountryAssignment.json", JSON.stringify(countryAssigned), 'utf8', function (err) {
         if (err)
             throw err;
 
-        fs.writeFile("../Input_Parsed/FinalizedMatrix.json", JSON.stringify(countryMatrix), 'utf8', function(err){
+        fs.writeFile("Input_Parsed/FinalizedMatrix.json", JSON.stringify(countryMatrix), 'utf8', function(err){
             if(err) throw err;
+            console.log("Write FinalizedMatrix.json");
             return;
         })
     });
+
 }
 
-
 match(getCountryRandom);
-
 
 

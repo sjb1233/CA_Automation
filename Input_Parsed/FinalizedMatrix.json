@@ -18,9 +18,10 @@
     ],
     "Countries": [
       "A",
-      "H"
+      "B",
+      "K"
     ],
-    "Number_Remaining": 3
+    "Number_Remaining": 0
   },
   "Mentor College": {
     "Number_of_Delegates": 20,
@@ -41,9 +42,10 @@
     ],
     "Countries": [
       "C",
-      "E"
+      "E",
+      "O"
     ],
-    "Number_Remaining": 2
+    "Number_Remaining": 0
   },
   "Royal College, Colombo, Sri Lanka": {
     "Number_of_Delegates": 4,
@@ -63,9 +65,10 @@
       "UNITED NATIONS SECURITY COUNCIL 1961"
     ],
     "Countries": [
-      "B"
+      "H",
+      "M"
     ],
-    "Number_Remaining": 1
+    "Number_Remaining": 0
   },
   "Mosaic Explore": {
     "Number_of_Delegates": 6,
@@ -86,7 +89,7 @@
     ],
     "Countries": [
       "G",
-      "K"
+      "L"
     ],
     "Number_Remaining": 0
   },
@@ -109,8 +112,9 @@
     ],
     "Countries": [
       "I",
-      "J"
+      "J",
+      "P"
     ],
-    "Number_Remaining": 1
+    "Number_Remaining": 0
   }
 }
